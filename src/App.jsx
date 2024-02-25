@@ -1,10 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './store';
-import SignUp from './auth/signUp';
-import SignIn from './auth/signIn';
-import LogOut from './auth/logOut';
 import Todo from './container/todo';
 
 function App() {
