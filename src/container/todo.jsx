@@ -1,32 +1,32 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { addTodos, deleteTodos, updateTodos } from '../todoRedux/actions/todo';
-import Input from '../components/Input';
 import TodoList from '../components/TodoList/todoList';
+import Input from '../components/Input';
+import { useContext } from 'react';
+import TodoContext from '../context/TodoContext';
 
 const Todo = () => {
-  const todos = useSelector(state => state.todos);
-  const dispatch = useDispatch();
+  const { todos, dispatch } = useContext(TodoContext);
 
   const handleAddTodo = (text) => {
-    dispatch(addTodos(text));
+    dispatch({ type: 'ADD_TODO', text });
   };
 
   const handleDeleteTodo = (id) => {
-    dispatch(deleteTodos(id));
+    dispatch({ type: 'DELETE_TODO', index: id });
   };
 
   const handleUpdateTodo = (id) => {
     const newText = prompt('Enter new todo text:');
     if (newText !== null) {
-      dispatch(updateTodos(id, newText));
+      dispatch({ type: 'UPDATE_TODO', index: id, text: newText });
     }
   };
 
   return (
     <div>
       <Input onSubmit={handleAddTodo} />
-      <TodoList todos={todos} onCreate={handleAddTodo} onDelete={handleDeleteTodo} onUpdate={handleUpdateTodo} />
+      <TodoList
+        todos={todos} onDelete={handleDeleteTodo} onUpdate={handleUpdateTodo} />
     </div>
   );
 };

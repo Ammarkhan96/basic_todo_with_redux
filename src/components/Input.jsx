@@ -7,7 +7,7 @@ const Input = ({ onSubmit }) => {
 
   const handleSubmit = () => {
     if (text.trim() === '') {
-      alert('Please Create Your Todo!');
+      alert('Create Your Todo First...');
       return;
     }
     onSubmit(text);

@@ -8,6 +8,7 @@ const TextInput = ({ value, onChange }) => {
             value={value}
             onChange={onChange}
             placeholder="Enter todo here..."
+            
         />
     )
 }
